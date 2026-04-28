@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.umc10th.domain.member.enums.Gender;
 import umc.umc10th.domain.member.enums.Role;
+import umc.umc10th.domain.member.enums.SocialType;
 import umc.umc10th.global.entity.BaseEntity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +31,10 @@ public class Member extends BaseEntity {
     private Role role;
 
     @Column(name="social_id", length=50, nullable=true)
-    private String social_id;
+    private String socialId;
 
     @Column(name="social_type", nullable=true)
-    private String social_type;
+    private SocialType socialType;
 
     @Column(nullable = false)
     private String password;
@@ -46,17 +48,17 @@ public class Member extends BaseEntity {
     private Gender gender = Gender.NONE;
 
     @Column(name = "birth_date", nullable=false)
-    private LocalDateTime birth_date;
+    private LocalDate birthDate;
 
     @Column(name = "address", length = 50, nullable=false)
     private String address;
 
     @Column(name = "phone_number", length=20)
-    private String phone_number;
+    private String phoneNumber;
 
     @Column(name = "point", nullable=false)
     @Builder.Default
-    int point = 0;
+    Integer point = 0;
 
     @Column(name="url", nullable=false)
     private String url;
