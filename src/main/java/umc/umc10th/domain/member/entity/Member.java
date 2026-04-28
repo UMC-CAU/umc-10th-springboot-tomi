@@ -30,11 +30,13 @@ public class Member extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @Column(name="social_id", length=50, nullable=true)
+    @Column(name="social_id", length=50, nullable=false)
     private String socialId;
 
-    @Column(name="social_type", nullable=true)
-    private SocialType socialType;
+    @Column(name="social_type", nullable=false)
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private SocialType socialType = SocialType.LOCAL;
 
     @Column(nullable = false)
     private String password;
