@@ -2,6 +2,7 @@ package umc.umc10th.domain.mission.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import umc.umc10th.domain.member.enums.Status;
 import umc.umc10th.domain.mission.dto.MissionResDTO;
 import umc.umc10th.global.apiPayload.ApiResponse;
 import umc.umc10th.global.apiPayload.code.GeneralSuccessCode;
@@ -14,7 +15,7 @@ public class MissionController {
 
     @GetMapping
     public ApiResponse<MissionResDTO.MissionList> getMissions(
-            @RequestParam String status,
+            @RequestParam Status status,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {

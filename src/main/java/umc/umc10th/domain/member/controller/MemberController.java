@@ -2,10 +2,7 @@ package umc.umc10th.domain.member.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import umc.umc10th.domain.member.dto.AuthReqDTO;
 import umc.umc10th.domain.member.dto.AuthResDTO;
 import umc.umc10th.domain.member.dto.MemberReqDTO;
@@ -25,17 +22,12 @@ public class MemberController {
         return "test";
     }
 
-    @PostMapping("/signup")
-    public ApiResponse<AuthResDTO.SignUp> signUp(
-            @RequestBody @Valid AuthReqDTO.SignUp request
-    ) {
-        return ApiResponse.onSuccess(GeneralSuccessCode.OK, null);
-    }
 
-    @PostMapping("/members/me")
+
+    @GetMapping("/members/{memberId}/me")
     public ApiResponse<MemberResDTO.GetInfo> getInfo(
-            @RequestBody MemberReqDTO.GetInfo req
+            @PathVariable Long memberId
     ) {
-        return ApiResponse.onSuccess(GeneralSuccessCode.OK, memberService.getInfo(req));
+        return ApiResponse.onSuccess(GeneralSuccessCode.OK, memberService.getInfo(memberId));
     }
 }
