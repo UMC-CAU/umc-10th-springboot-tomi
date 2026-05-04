@@ -30,4 +30,13 @@ public class Review {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id", nullable=false)
     private Store store;
+
+    public static Review create(Member member, Store store, String content, Float score) {
+        return Review.builder()
+                .member(member)
+                .store(store)
+                .content(content)
+                .score(score)
+                .build();
+    }
 }
