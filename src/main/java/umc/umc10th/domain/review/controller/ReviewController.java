@@ -24,4 +24,16 @@ public class ReviewController {
         return ApiResponse.onSuccess(GeneralSuccessCode.CREATED,
                 ReviewResDTO.CreateReview.from(reviewService.createReview(memberId, storeId, request)));
     }
+
+    @GetMapping("/reviews")
+    public ApiResponse<ReviewResDTO.ReviewListWithCursor> getMyReviews(
+            @RequestParam Long memberId,
+            @RequestParam(required = false) Long cursorId,
+            @RequestParam(required = false) Float cursorScore,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return ApiResponse.onSuccess(GeneralSuccessCode.OK,
+                reviewService.getMyReviews(memberId, cursorId, cursorScore, sortBy, size));
+    }
 }
