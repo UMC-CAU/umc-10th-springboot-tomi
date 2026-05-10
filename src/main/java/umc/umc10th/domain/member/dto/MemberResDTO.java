@@ -9,14 +9,14 @@ public class MemberResDTO {
             String email,
             String phoneNumber,
             Integer point
-    ){}
-
-    public static GetInfo from(Member member) {
-        return new GetInfo(
-                member.getId(),
-                member.getEmail(),
-                member.getPhoneNumber(),
-                member.getPoint()
-        );
+    ){
+        public static GetInfo from(Member member) {
+            return new GetInfo(
+                    member.getId(),
+                    member.getEmail(),
+                    member.getPhoneNumber(),
+                    member.getPoint()
+            );
+        }
     }
 }

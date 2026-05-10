@@ -28,4 +28,16 @@ public class MemberMission {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id", nullable=false)
     private Mission mission;
+
+    public static MemberMission create(Member member, Mission mission) {
+        return MemberMission.builder()
+                .member(member)
+                .mission(mission)
+                .status(Status.CHALLENGE)
+                .build();
+    }
+
+    public void updateStatus(Status status) {
+        this.status = status;
+    }
 }

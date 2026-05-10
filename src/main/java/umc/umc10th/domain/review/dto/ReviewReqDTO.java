@@ -16,7 +16,7 @@ public class ReviewReqDTO {
             @NotNull
             @Min(value = 1, message = "최소 1점입니다")
             @Max(value = 5, message = "최대 5점입니다")
-            Integer score,
+            Float score,
 
             List<String> pictureUrl   // 사진 URL 목록 (선택)
     ) {}
