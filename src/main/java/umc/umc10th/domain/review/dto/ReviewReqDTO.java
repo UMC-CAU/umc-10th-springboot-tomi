@@ -20,4 +20,14 @@ public class ReviewReqDTO {
 
             List<String> pictureUrl   // 사진 URL 목록 (선택)
     ) {}
+
+    public record GetMyReviews(
+            Long memberId,
+            Long cursorId,
+            Float cursorScore,
+            String sortBy,
+            Integer size
+    ) {
+        public int getSize() { return size != null ? size : 10; }
+    }
 }
